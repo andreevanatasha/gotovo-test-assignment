@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "GT-Walsheim";
+  font-weight: bold;
+  src: url("/GT-Walsheim-Pro-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "GT-Walsheim";
+  font-weight: normal;
+  src: url("/GT-Walsheim-Pro-Regular.ttf") format("truetype");
+}
+
+body {
+  background-color: white;
+  margin: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* animations for CSSTransitionGroup */
+
+.map-overflow-enter {
+  opacity: 0.01;
+}
+
+.map-overflow-enter.map-overflow-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.map-overflow-leave {
+  opacity: 1;
+}
+
+.map-overflow-leave.map-overflow-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+
+.map-overflow-appear {
+  opacity: 0.01;
+}
+
+.map-overflow-appear.map-overflow-appear-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+/*styled-component don't override default styles if no className is specified*/
+
+.ReactModal__Html--open,
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.SearchView.ReactModal__Content {
+  height: 40%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in;
+  will-change: transform;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: row;
+  overflow-y: auto;
+  position: relative;
+  outline: none;
+}
+
+.SearchView.ReactModal__Content--after-open {
+  transform: translateY(0%);
+  overflow-y: hidden;
+}
+.SearchView.ReactModal__Content--before-close {
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+.SearchView__overlay.ReactModal__Overlay {
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+.SearchView__overlay.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.5s;
+}
+.SearchView__overlay.ReactModal__Overlay--before-close {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.SearchView__close {
+  margin-left: 24px;
+  padding: 16px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.SearchView__close svg {
+  width: 12px;
+  padding: 0;
+}
+.SearchView__content {
+  position: relative;
+  overflow-y: auto;
+  padding: 24px 32px;
+  flex: 1 1 auto;
+  background: #fff;
+}
+.SearchView__subtitle {
+  font-size: 12px;
+  margin-top: 2px;
+}
